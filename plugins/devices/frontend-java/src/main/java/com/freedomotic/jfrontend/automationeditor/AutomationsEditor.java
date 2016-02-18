@@ -154,7 +154,7 @@ public class AutomationsEditor extends Protocol {
     public void onStop() {
         //release resources
         try {
-            gui.dispose();
+            getGui().dispose();
         } catch (Exception e) {
         }
     }

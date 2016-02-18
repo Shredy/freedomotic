@@ -21,12 +21,18 @@ package com.freedomotic.plugins.devices.hello;
 
 import com.freedomotic.api.EventTemplate;
 import com.freedomotic.api.Protocol;
+import com.freedomotic.app.Freedomotic;
+import com.freedomotic.events.MessageEvent;
 import com.freedomotic.exceptions.UnableToExecuteException;
 import com.freedomotic.things.EnvObjectLogic;
 import com.freedomotic.things.ThingRepository;
 import com.freedomotic.reactions.Command;
 import com.google.inject.Inject;
+import com.freedomotic.model.geometry.FreedomPoint;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Logger;
 
 public class HelloWorld
@@ -47,8 +53,11 @@ public class HelloWorld
         //POLLING_WAIT is the value of the property "time-between-reads" or 2000 millisecs,
         //default value if the property does not exist in the manifest
         setPollingWait(POLLING_WAIT); //millisecs interval between hardware device status reads
+        
+        
     }
 
+    
     @Override
     protected void onShowGui() {
         /**
@@ -59,6 +68,7 @@ public class HelloWorld
         //bindGuiToPlugin(new HelloWorldGui(this));
     }
 
+    
     @Override
     protected void onHideGui() {
         //implement here what to do when the this plugin GUI is closed
@@ -68,14 +78,20 @@ public class HelloWorld
 
     @Override
     protected void onRun() {
-        for (EnvObjectLogic thing : thingsRepository.findAll()) {
-            LOG.info("HelloWorld sees Thing: " + thing.getPojo().getName());
-        }
+    		
+    	
+ 
+    	
+  
     }
 
+
+    
     @Override
     protected void onStart() {
         LOG.info("HelloWorld plugin is started");
+        
+        setGui(new PluginJFrame());
     }
 
     @Override

@@ -66,7 +66,7 @@ public class VariousSensors extends Protocol {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                VariousSensorsGui guiHook = (VariousSensorsGui) gui;
+                VariousSensorsGui guiHook = (VariousSensorsGui) getGui();
                 Command reply = send(c);
 
                 if (reply != null) {
@@ -95,7 +95,7 @@ public class VariousSensors extends Protocol {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                VariousSensorsGui guiHook = (VariousSensorsGui) gui;
+                VariousSensorsGui guiHook = (VariousSensorsGui) getGui();
                 Command reply = send(nlpCommand);
 
                 if (reply != null) {

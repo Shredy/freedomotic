@@ -66,7 +66,7 @@ public class Plugin implements Client, BusConsumer {
     @XmlElement
     public Config configuration;
     @Deprecated
-    protected JFrame gui;
+	private JFrame gui;
     @XmlElement
     protected String description;
     @XmlElement
@@ -267,9 +267,9 @@ public class Plugin implements Client, BusConsumer {
      * @param window
      */
     public void bindGuiToPlugin(JFrame window) {
-        gui = window;
-        gui.setVisible(false);
-        gui.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setGui(window);
+        getGui().setVisible(false);
+        getGui().setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -284,8 +284,8 @@ public class Plugin implements Client, BusConsumer {
 
         onShowGui();
 
-        if (gui != null) {
-            gui.setVisible(true);
+        if (getGui() != null) {
+            getGui().setVisible(true);
         } else {
             LOG.warning("ERROR: plugin gui is null");
         }
@@ -299,8 +299,8 @@ public class Plugin implements Client, BusConsumer {
     public void hideGui() {
         onHideGui();
 
-        if (gui != null) {
-            gui.setVisible(false);
+        if (getGui() != null) {
+            getGui().setVisible(false);
         }
     }
 
@@ -519,5 +519,13 @@ public class Plugin implements Client, BusConsumer {
         listener.destroy();
         stop();
     }
+
+	public JFrame getGui() {
+		return gui;
+	}
+
+	public void setGui(JFrame gui) {
+		this.gui = gui;
+	}
 
 }

@@ -75,7 +75,7 @@ public class LogViewer extends Protocol {
     protected void onStop() {
         //free memory
         hideGui();
-        gui = null;
+        setGui(null);
         logger.removeHandler(handler);
         handler = null;
     }
